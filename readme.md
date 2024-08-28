@@ -10,10 +10,10 @@
 
 ```bash
 #dont forget to install nwidart/laravel-modules 
-composer install nwidart/laravel-modules
+composer require nwidart/laravel-modules
 
 #install product_module package 
-composer install magdasaif/product_module:dev-dev
+composer require magdasaif/product_module:dev-dev
 
 # publish module folders
 php artisan product:publish

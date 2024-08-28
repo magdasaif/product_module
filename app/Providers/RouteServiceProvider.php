@@ -3,12 +3,12 @@
 namespace Modules\Product\Providers;
 
 use Illuminate\Support\Facades\Route;
-use Modules\Product\Traits\Configuration;
+// use Modules\Product\Traits\Configuration;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    use Configuration;
+    // use Configuration;
     //===================================================================================
     /**
      * The module namespace to assume when generating URLs to actions.
@@ -44,7 +44,7 @@ class RouteServiceProvider extends ServiceProvider
             // ->group($this->module_path('Product', '/routes/web.php'));
             ->group( __DIR__.'/../../routes/web.php');
 
-        // Route::middleware('web')->group($this->module_path('Product', '/routes/web.php'));
+        // Route::middleware('web')->group($this->module_path2('Product', '/routes/web.php'));
     }
     //===================================================================================
     /**
@@ -59,7 +59,7 @@ class RouteServiceProvider extends ServiceProvider
             // ->group($this->module_path('Product', '/routes/api.php'));
             ->group( __DIR__.'/../../routes/api.php');
 
-        // Route::middleware('api')->prefix('api')->name('api.')->group($this->module_path('Product', '/routes/api.php'));
+        // Route::middleware('api')->prefix('api')->name('api.')->group($this->module_path2('Product', '/routes/api.php'));
     }
     //===================================================================================
 }
