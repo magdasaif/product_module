@@ -29,7 +29,7 @@ class ProductServiceProvider extends ServiceProvider
         //==============================================================================================
         // publish all package folder
         $this->publishes([
-            dirname(__DIR__) .'/..' => base_path('Modules/',$this->moduleName)        
+            dirname(__DIR__) .'/..' => base_path('Modules/Product')        
         ], 'product-module');
         //==============================================================================================
         // publish config
