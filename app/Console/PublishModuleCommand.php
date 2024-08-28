@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputArgument;
 class PublishModuleCommand extends Command
 {
     //==============================================================================================
-    protected $signature    = 'Product:publish';
+    protected $signature    = 'product:publish';
     protected $description  = 'Publish package files and update module status.';
     //==============================================================================================
     protected string $moduleName        = 'Product';
@@ -21,8 +21,8 @@ class PublishModuleCommand extends Command
     }
     //==============================================================================================
     public function handle(){
-        $this->call('vendor:publish', ['--tag' => $this->moduleNameLower.'-module']);
-        $this->call('vendor:publish', ['--tag' => $this->moduleNameLower.'-config']);
+        $this->call('vendor:publish', ['--tag' => 'product-module']);
+        $this->call('vendor:publish', ['--tag' => 'product-config']);
 
         $this->handleModulesStatusJsonFile();
         $this->info('Module files published and status updated.');
