@@ -24,7 +24,7 @@ class ProductServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         // $this->loadMigrationsFrom($this->module_path($this->moduleName, 'database/migrations'));
-        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->loadMigrationsFrom(dirname(__DIR__).'/../database/migrations');
         // $this->overrideModuleFiles();
         //==============================================================================================
         // publish all package folder
@@ -37,6 +37,10 @@ class ProductServiceProvider extends ServiceProvider
             dirname(__DIR__) .'/../config/config.php' => config_path('product.php'),
         ], 'product-config');
         //==============================================================================================
+        if (!$this->app['modules']->find('Product')->isEnabled()) {
+            $this->loadRoutesFrom(dirname(__DIR__).'/../routes/web.php');
+            // Load other resources (views, migrations, etc.) here
+        }
     }
     //===================================================================================
     /**
@@ -79,8 +83,8 @@ class ProductServiceProvider extends ServiceProvider
             // $this->loadTranslationsFrom($this->module_path($this->moduleName, 'lang'), $this->moduleNameLower);
             // $this->loadJsonTranslationsFrom($this->module_path($this->moduleName, 'lang'));
 
-            $this->loadTranslationsFrom(__DIR__.'/../../lang', 'product');
-            $this->loadJsonTranslationsFrom(__DIR__.'/../../lang');
+            $this->loadTranslationsFrom(dirname(__DIR__).'/../lang', 'product');
+            $this->loadJsonTranslationsFrom(dirname(__DIR__).'/../lang');
         }
     }
     //===================================================================================
@@ -91,8 +95,8 @@ class ProductServiceProvider extends ServiceProvider
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         // $this->publishes([$this->module_path($this->moduleName, 'config/config.php') => config_path('setting.php')], 'config');
         // $this->mergeConfigFrom($this->module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower);
-        $this->publishes([__DIR__.'/../../config/config.php' => config_path('product.php')], 'config');
-        $this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'product');
+        $this->publishes([dirname(__DIR__) .'/../config/config.php' => config_path('product.php')], 'config');
+        $this->mergeConfigFrom(dirname(__DIR__) .'/../config/config.php', 'product');
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     }
     //===================================================================================
@@ -102,7 +106,7 @@ class ProductServiceProvider extends ServiceProvider
     public function registerViews(): void{
         $viewPath = resource_path('views/modules/product');
         // $sourcePath = $this->module_path($this->moduleName, 'resources/views');
-        $sourcePath = __DIR__.'/../../resources/views';
+        $sourcePath = dirname(__DIR__) .'/../resources/views';
 
         $this->publishes([$sourcePath => $viewPath], ['views', 'product-module-views']);
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), 'product');

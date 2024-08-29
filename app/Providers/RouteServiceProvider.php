@@ -42,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->moduleNamespace)
             // ->group($this->module_path('Product', '/routes/web.php'));
-            ->group( __DIR__.'/../../routes/web.php');
+            ->group( dirname(__DIR__).'/../routes/web.php');
 
         // Route::middleware('web')->group($this->module_path2('Product', '/routes/web.php'));
     }
@@ -57,7 +57,7 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->moduleNamespace)
             // ->group($this->module_path('Product', '/routes/api.php'));
-            ->group( __DIR__.'/../../routes/api.php');
+            ->group( dirname(__DIR__).'/../routes/api.php');
 
         // Route::middleware('api')->prefix('api')->name('api.')->group($this->module_path2('Product', '/routes/api.php'));
     }
