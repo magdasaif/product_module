@@ -37,10 +37,10 @@ class ProductServiceProvider extends ServiceProvider
             dirname(__DIR__) .'/../config/config.php' => config_path('product.php'),
         ], 'product-config');
         //==============================================================================================
-        if (!$this->app['modules']->find('Product')->isEnabled()) {
-            $this->loadRoutesFrom(dirname(__DIR__).'/../routes/web.php');
-            // Load other resources (views, migrations, etc.) here
-        }
+        // if (!$this->app['modules']->find('Product')->isEnabled()) {
+        //     $this->loadRoutesFrom(dirname(__DIR__).'/../routes/web.php');
+        //     // Load other resources (views, migrations, etc.) here
+        // }
     }
     //===================================================================================
     /**
